@@ -29,11 +29,12 @@ public class Main {
         System.out.println(army);
 
         List<String> workPepole = persons.stream()
-                .filter(x -> (x.getAge() > 18 && x.getAge() < 60 && x.getSex().equals(Sex.WOMAN)
-                    || x.getAge() > 18 && x.getAge() < 65 && x.getSex().equals(Sex.MAN))
-                        && x.getEducation().equals(Education.HIGHER))
-                .map(person -> person.getFamily())
+                .filter(x -> x.getEducation().equals(Education.HIGHER))
+                .filter(x -> x.getAge() > 18)
+                .filter(x-> x.getSex().equals(Sex.MAN) ? x.getAge() < 65 : x.getSex().equals(Sex.WOMAN) && x.getAge() < 60)
+                .map(Person::getFamily)
                 .collect(Collectors.toList());
         System.out.println(workPepole);
     }
 }
+
