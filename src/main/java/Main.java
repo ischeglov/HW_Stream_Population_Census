@@ -17,17 +17,21 @@ public class Main {
             );
         }
 
+        //ищем количество несовершеннолетних (т.е. людей младше 18 лет)
         long count = persons.stream()
                 .filter(x -> x.getAge() < 18)
                 .count();
         System.out.println(count);
 
+        //Получаем список фамилий призывников (т.е. мужчин от 18 и до 27 лет)
         List<String> army = persons.stream()
                 .filter(x -> x.getAge() > 18 && x.getAge() < 27 && x.getSex().equals(Sex.MAN))
                 .map(person -> person.getFamily())
                 .collect(Collectors.toList());
         System.out.println(army);
-
+        
+        //Получить отсортированный по фамилии список потенциально работоспособных людей с высшим образованием в выборке
+        // (т.е. людей с высшим образованием от 18 до 60 лет для женщин и до 65 лет для мужчин)
         List<String> workPepole = persons.stream()
                 .filter(x -> x.getEducation().equals(Education.HIGHER))
                 .filter(x -> x.getAge() > 18)
