@@ -29,8 +29,8 @@ public class Main {
                 .map(person -> person.getFamily())
                 .collect(Collectors.toList());
         System.out.println(army);
-        
-        //Получить отсортированный по фамилии список потенциально работоспособных людей с высшим образованием в выборке
+
+        //Получаем отсортированный по фамилии список потенциально работоспособных людей с высшим образованием в выборке
         // (т.е. людей с высшим образованием от 18 до 60 лет для женщин и до 65 лет для мужчин)
         List<String> workPepole = persons.stream()
                 .filter(x -> x.getEducation().equals(Education.HIGHER))
